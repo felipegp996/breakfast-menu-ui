@@ -10,7 +10,8 @@ export interface AuthSession {
   };
 }
 
-const apiBaseUrl = process.env.NEXT_API_URL ?? "http://localhost:4000";
+const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL ??
+  (process.env.NODE_ENV === "development" ? "http://localhost:4000" : undefined);
 
 export type IngredientUnit = "g" | "ml" | "each";
 
@@ -111,6 +112,10 @@ export interface BreakfastRequestResult {
 }
 
 async function request<T>(path: string, options: RequestInit = {}, token?: string): Promise<T> {
+  if (!apiBaseUrl) {
+    throw new Error("The API URL is not configured. Set NEXT_PUBLIC_API_URL and redeploy the frontend.");
+  }
+
   const headers = new Headers(options.headers);
   if (options.body && !headers.has("Content-Type")) {
     headers.set("Content-Type", "application/json");
