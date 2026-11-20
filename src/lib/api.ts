@@ -10,7 +10,7 @@ export interface AuthSession {
   };
 }
 
-const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000";
+const apiBaseUrl = process.env.NEXT_API_URL ?? "http://localhost:4000";
 
 export type IngredientUnit = "g" | "ml" | "each";
 
