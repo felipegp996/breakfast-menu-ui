@@ -1164,7 +1164,13 @@ input {
 
   .admin-nav-link {
     gap: 5px;
-    padding: 0 7px;
+    width: 34px;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .admin-nav-link > span {
+    display: none;
   }
 
   .admin-page-heading {
@@ -2008,5 +2014,137 @@ input {
 
   .stock-requirements {
     grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.notification-toolbar {
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.notification-list {
+  margin-top: 8px;
+  border-top: 1px solid #e3e3da;
+}
+
+.notification-row {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 18px;
+  padding: 18px 0;
+  border-bottom: 1px solid #e3e3da;
+}
+
+.notification-image {
+  width: 88px;
+  height: 88px;
+  border-radius: 4px;
+  background-color: #e8e9df;
+  background-position: center;
+  background-size: cover;
+}
+
+.notification-details {
+  min-width: 0;
+}
+
+.notification-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.notification-label {
+  color: #b35d40;
+  font-size: 8px;
+  font-weight: 750;
+}
+
+.notification-heading h2 {
+  margin: 4px 0 0;
+  color: #294238;
+  font-size: 15px;
+  font-weight: 620;
+}
+
+.notification-heading time {
+  flex: 0 0 auto;
+  color: #727d73;
+  font-size: 10px;
+}
+
+.notification-customer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 13px;
+  margin: 9px 0 0;
+  color: #68756b;
+  font-size: 10px;
+}
+
+.notification-customer strong {
+  color: #354c3e;
+  font-weight: 650;
+}
+
+.notification-ingredients {
+  margin: 9px 0 0;
+  color: #899087;
+  font-size: 9px;
+  line-height: 1.6;
+}
+
+.notification-pagination,
+.notification-pagination > div {
+  display: flex;
+  align-items: center;
+}
+
+.notification-pagination {
+  justify-content: space-between;
+  gap: 14px;
+  padding-top: 14px;
+  color: #7d857b;
+  font-size: 10px;
+}
+
+.notification-pagination > div {
+  gap: 7px;
+}
+
+.notification-pagination .icon-action {
+  width: 32px;
+  height: 32px;
+  border-color: #dedfd4;
+}
+
+.notification-empty {
+  min-height: 300px;
+}
+
+@media (max-width: 520px) {
+  .notification-row {
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 11px;
+    padding: 14px 0;
+  }
+
+  .notification-image {
+    width: 64px;
+    height: 64px;
+  }
+
+  .notification-heading {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .notification-heading h2 {
+    font-size: 13px;
+  }
+
+  .notification-pagination {
+    font-size: 9px;
   }
 }

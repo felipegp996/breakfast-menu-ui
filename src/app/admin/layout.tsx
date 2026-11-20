@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { BookOpen, CalendarDays, LogOut, Sunrise, Wheat } from "lucide-react";
+import { Bell, BookOpen, CalendarDays, LogOut, Sunrise, Wheat } from "lucide-react";
 import { useEffect } from "react";
 import { useAuthStore } from "@/stores/auth-store";
 
@@ -32,17 +32,21 @@ export default function AdminLayout({ children }: Readonly<{ children: React.Rea
         </Link>
         <p className="admin-nav-label">CATALOG</p>
         <nav className="admin-nav" aria-label="Admin navigation">
-          <Link className={pathname.startsWith("/admin/recipes") ? "admin-nav-link active" : "admin-nav-link"} href="/admin/recipes">
+          <Link aria-label="Recipes" className={pathname.startsWith("/admin/recipes") ? "admin-nav-link active" : "admin-nav-link"} href="/admin/recipes" title="Recipes">
             <BookOpen size={17} />
             <span>Recipes</span>
           </Link>
-          <Link className={pathname.startsWith("/admin/ingredients") ? "admin-nav-link active" : "admin-nav-link"} href="/admin/ingredients">
+          <Link aria-label="Ingredients" className={pathname.startsWith("/admin/ingredients") ? "admin-nav-link active" : "admin-nav-link"} href="/admin/ingredients" title="Ingredients">
             <Wheat size={17} />
             <span>Ingredients</span>
           </Link>
-          <Link className={pathname.startsWith("/admin/daily-stock") ? "admin-nav-link active" : "admin-nav-link"} href="/admin/daily-stock">
+          <Link aria-label="Daily stock" className={pathname.startsWith("/admin/daily-stock") ? "admin-nav-link active" : "admin-nav-link"} href="/admin/daily-stock" title="Daily stock">
             <CalendarDays size={17} />
             <span>Daily stock</span>
+          </Link>
+          <Link aria-label="Notifications" className={pathname.startsWith("/admin/notifications") ? "admin-nav-link active" : "admin-nav-link"} href="/admin/notifications" title="Notifications">
+            <Bell size={17} />
+            <span>Notifications</span>
           </Link>
         </nav>
         <div className="admin-sidebar-bottom">

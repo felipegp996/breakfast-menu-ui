@@ -111,6 +111,32 @@ export interface BreakfastRequestResult {
   status: "active" | "cancelled" | "completed";
 }
 
+export interface OrderNotification {
+  _id: string;
+  userId: string;
+  userName: string;
+  userEmail: string;
+  order: {
+    requestId: string;
+    serviceDate: string;
+    recipe: {
+      name: string;
+      description: string;
+      imageUrl: string;
+      ingredients: { name: string; quantity: number; unit: string }[];
+    };
+  };
+  orderedAt: string;
+}
+
+export interface OrderNotificationsPage {
+  notifications: OrderNotification[];
+  page: number;
+  pageSize: number;
+  total: number;
+  totalPages: number;
+}
+
 async function request<T>(path: string, options: RequestInit = {}, token?: string): Promise<T> {
   if (!apiBaseUrl) {
     throw new Error("The API URL is not configured. Set NEXT_PUBLIC_API_URL and redeploy the frontend.");
@@ -176,6 +202,10 @@ export function updateRecipe(token: string, id: string, input: RecipeInput): Pro
 
 export function deactivateRecipe(token: string, id: string): Promise<Recipe> {
   return request(`/api/admin/recipes/${id}`, { method: "DELETE" }, token);
+}
+
+export function listOrderNotifications(token: string, page = 1): Promise<OrderNotificationsPage> {
+  return request(`/api/admin/notifications?page=${page}`, {}, token);
 }
 
 export function getTodayMenu(token: string): Promise<MenuToday> {
